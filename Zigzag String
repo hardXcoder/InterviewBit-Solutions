@@ -1,0 +1,56 @@
+public class Solution {
+    public String convert(String A, int B) {
+        
+        if(B==1)
+        return A;
+        ArrayList<ArrayList<Character>> list = new ArrayList();
+        for(int i=0;i<B;i++)
+        {
+            list.add(new ArrayList());
+        }
+        
+        int counter2=0;
+        for(int i=B;i>0;i--)
+        {
+            int chartoskip = 2*(i-1);
+            if(i==1)
+            {
+                chartoskip = 2*(B-1);
+            }
+                        // System.out.println(chartoskip);
+            
+            int chartoskip2 = 2*(B-i);
+            if(i==B)
+            {
+                chartoskip2 = 2*(B-1);
+            }
+            
+            int j=B-i;
+            int counter=0;
+            while(j<A.length())
+            {
+                list.get(B-i).add(A.charAt(j));
+                
+                // System.out.println(A.charAt(j));
+                if(counter%2==0)
+                j+=chartoskip;
+                else
+                j+=chartoskip2;
+                
+                counter++;
+                
+            }
+        }
+        
+        StringBuffer str = new StringBuffer();
+        for(int i=0;i<list.size();i++)
+        {
+            for(int j=0;j<list.get(i).size();j++)
+            {
+                str.append(list.get(i).get(j));
+            }
+        }
+        
+        return str.toString();
+    }
+}
