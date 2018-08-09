@@ -1,0 +1,137 @@
+public class Solution {
+    public String intToRoman(int A) {
+        int dup=A;
+        int nd =0;
+        int rev =0;
+        while(dup>0)
+        {
+            nd++;
+            rev= rev*10+dup%10;
+            dup = dup/10;
+        }
+        
+        String ans ="";
+        
+        while(rev>0)
+        {
+            int xx=rev%10;
+            if(nd==4)
+            {
+                
+                if(xx<=3)
+                {
+                    for(int i=0;i<xx;i++)
+                    {
+                        ans +="M";
+                    }
+                }
+                else if(xx==4)
+                {
+                    ans +="CM";
+                }
+                else if(xx==5)
+                {
+                    ans +="lol";
+                }
+            }
+            else if(nd ==3)
+            {
+                 if(xx<=3)
+                {
+                    for(int i=0;i<xx;i++)
+                    {
+                        ans +="C";
+                    }
+                }
+                else if(xx==4)
+                {
+                    ans +="CD";
+                }
+                else if(xx==5)
+                {
+                    ans +="D";
+                }
+                else if(xx<=8&&xx>5)
+                {
+                    ans +="D";
+                    for(int i=0;i<xx-5;i++)
+                    {
+                        ans +="C";
+                    }
+                }
+                else if(xx==9)
+                {
+                    ans +="CM";
+                }
+            }
+            else if(nd ==2)
+            {
+                
+                 if(xx<=3)
+                {
+                    for(int i=0;i<xx;i++)
+                    {
+                        ans +="X";
+                    }
+                }
+                else if(xx==4)
+                {
+                    ans +="XL";
+                }
+                else if(xx==5)
+                {
+                    ans +="L";
+                }
+                else if(xx<=8&&xx>5)
+                {
+                    ans +="L";
+                    for(int i=0;i<xx-5;i++)
+                    {
+                        ans +="X";
+                    }
+                }
+                else if(xx==9)
+                {
+                    ans +="XC";
+                }
+                
+            }
+            else if(nd==1)
+            {
+                if(xx<=3)
+                {
+                    for(int i=0;i<xx;i++)
+                    {
+                        ans +="I";
+                    }
+                }
+                else if(xx==4)
+                {
+                    ans +="IV";
+                }
+                else if(xx==5)
+                {
+                    ans +="V";
+                }
+                else if(xx<=8&&xx>5)
+                {
+                    ans +="V";
+                    for(int i=0;i<xx-5;i++)
+                    {
+                        ans +="I";
+                    }
+                }
+                else if(xx==9)
+                {
+                    ans +="IX";
+                }
+            }
+            nd--;
+            rev=rev/10;
+        }
+        
+        return ans;
+        
+        
+    }
+}
