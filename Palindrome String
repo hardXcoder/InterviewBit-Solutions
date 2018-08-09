@@ -1,0 +1,30 @@
+public class Solution {
+    public int isPalindrome(String A) {
+        
+        StringBuilder sb = new StringBuilder();
+        A= A.toUpperCase();
+        // System.out.println(A);
+        for(int i=0;i<A.length();i++)
+        {
+            if((A.charAt(i)>='a'&&A.charAt(i)<='z')||(A.charAt(i)>='A'&&A.charAt(i)<='Z')||(A.charAt(i)>=48&&A.charAt(i)<=57))
+            {
+                sb.append(A.charAt(i));
+            }
+           
+        }
+        
+        return ispalin(sb.toString());
+
+        
+    }
+    
+    public int ispalin(String str)
+    {
+        for(int i=0;i<str.length()/2;i++)
+        {
+            if(str.charAt(i)!=str.charAt(str.length()-1-i))
+            return 0;
+        }
+        return 1;
+    }
+}
