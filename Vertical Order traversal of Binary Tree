@@ -1,0 +1,108 @@
+/**
+ * Definition for binary tree
+ * class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) {
+ *      val = x;
+ *      left=null;
+ *      right=null;
+ *     }
+ * }
+ */
+public class Solution {
+    
+    public class pair implements Comparable<pair>
+    {
+        int val;
+        int pos;
+        int level;
+        
+        public pair(int val,int pos,int level)
+        {
+            this.val = val;
+            this.pos=pos;
+            this.level=level;
+        }
+        
+        public int compareTo(pair o)
+        {
+            if(this.pos==o.pos)
+            {
+                return this.level-o.level;
+            }
+            else
+            return this.pos-o.pos;
+        }
+        
+        public String toString()
+        {
+            return this.pos+" "+this.val;
+        }
+        
+    }
+    public ArrayList<ArrayList<Integer>> verticalOrderTraversal(TreeNode A) {
+       
+       ArrayList<pair> list = new ArrayList();
+       
+        traversal(A,0,0,list);
+        
+        // System.out.println(list.get(0).pos+" "+list.get(1).pos);
+        Collections.sort(list);
+       
+       int pos =0;
+              ArrayList<Integer> temp = new ArrayList();
+
+       
+       if(list.size()>0){
+        pos= list.get(0).pos;
+               temp.add(list.get(0).val);}
+
+       
+       
+       
+       ArrayList<ArrayList<Integer>> biglist = new ArrayList();
+       
+       
+       for(int i=1;i<list.size();i++)
+       {
+           if(list.get(i).pos!=pos)
+           {
+               
+               biglist.add(temp);
+               
+               temp = new ArrayList();
+               
+               pos = list.get(i).pos;
+           }
+           
+           temp.add(list.get(i).val);
+           
+       }
+       
+       
+       
+       if(temp.size()!=0)
+       {
+           biglist.add(temp);
+       }
+       
+    //   System.out.println(list);
+    //   System.out.println(biglist.size());
+       
+       return  biglist;
+        
+    }
+    
+    public void traversal(TreeNode A,int pos,int level,ArrayList<pair> list)
+    {
+        if(A==null)
+        return ;
+        
+        list.add(new pair(A.val,pos,level));
+        
+        traversal(A.left,pos-1,level+1,list);
+        traversal(A.right,pos+1,level+1,list);
+    }
+}
