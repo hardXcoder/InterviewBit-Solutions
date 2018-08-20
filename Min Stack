@@ -1,0 +1,67 @@
+class Solution {
+    
+    int minele= Integer.MAX_VALUE;
+    Stack<Integer> st ;
+    
+    public Solution()
+    {
+        st = new Stack();
+        
+    }
+    
+    public void push(int x) {
+        
+        if(st.empty())
+        {
+            st.push(x);
+            minele=x;
+        }
+        
+        else if(x>=minele)
+        {
+            st.push(x);
+        }
+        else
+        {
+            st.push(2*x-minele);
+            minele=x;
+        }
+    }
+
+    public void pop() {
+        
+        if(st.empty())
+        {
+        }
+        else if(st.peek()<minele)
+        {
+            minele= 2*minele-st.peek();
+            st.pop();
+        }
+        else
+        {
+            st.pop();
+        }
+    }
+
+    public int top() {
+        
+         if(st.empty())
+        return -1;
+        
+        if(st.peek()<minele)
+        return minele;
+        
+        return st.peek();
+        
+    }
+
+    public int getMin() {
+        
+        // System.out.println(st.peek());
+        if(st.empty())
+        return -1;
+        
+        return minele;
+    }
+}
