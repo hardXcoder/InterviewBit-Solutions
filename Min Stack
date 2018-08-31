@@ -31,7 +31,7 @@ class Solution {
     public void pop() {
         
         if(st.empty())
-        {
+        { 
         }
         else if(st.peek()<minele)
         {
