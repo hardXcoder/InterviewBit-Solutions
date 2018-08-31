@@ -3,6 +3,7 @@ public class Solution {
         int dup=A;
         int nd =0;
         int rev =0;
+        
         while(dup>0)
         {
             nd++;
