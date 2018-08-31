@@ -2,7 +2,7 @@ public class Solution {
     // DO NOT MODIFY THE LIST. IT IS READ ONLY
     public int lengthOfLastWord(final String A) {
         
-        int len=0;
+        int len=0; 
         int len2=0;
         for(int i=0;i<A.length();i++)
         {
